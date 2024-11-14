@@ -21,7 +21,7 @@ class BotToastNavigatorObserverProxy {
 ///
 ///如果你项目有多个[Navigator],请将该BotToastNavigatorObserver添加到[Navigator.observers]
 class BotToastNavigatorObserver extends NavigatorObserver {
-  static final List<BotToastNavigatorObserverProxy> _leavePageCallbacks = [];
+  static final List<BotToastNavigatorObserverProxy> _leavePageCallbacks = <BotToastNavigatorObserverProxy>[];
 
   static bool debugInitialization = false;
 
@@ -54,7 +54,7 @@ class BotToastNavigatorObserver extends NavigatorObserver {
 
   @override
   void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    final copy = _leavePageCallbacks.toList(growable: false);
+    final List<BotToastNavigatorObserverProxy> copy = _leavePageCallbacks.toList(growable: false);
     for (BotToastNavigatorObserverProxy observerProxy in copy) {
       observerProxy.didPush?.call(route, previousRoute);
     }
@@ -62,7 +62,7 @@ class BotToastNavigatorObserver extends NavigatorObserver {
 
   @override
   void didReplace({Route<dynamic>? newRoute, Route<dynamic>? oldRoute}) {
-    final copy = _leavePageCallbacks.toList(growable: false);
+    final List<BotToastNavigatorObserverProxy> copy = _leavePageCallbacks.toList(growable: false);
     for (BotToastNavigatorObserverProxy observerProxy in copy) {
       observerProxy.didReplace?.call(newRoute, oldRoute);
     }
@@ -70,7 +70,7 @@ class BotToastNavigatorObserver extends NavigatorObserver {
 
   @override
   void didRemove(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    final copy = _leavePageCallbacks.toList(growable: false);
+    final List<BotToastNavigatorObserverProxy> copy = _leavePageCallbacks.toList(growable: false);
     for (BotToastNavigatorObserverProxy observerProxy in copy) {
       observerProxy.didRemove?.call(route, previousRoute);
     }
@@ -78,7 +78,7 @@ class BotToastNavigatorObserver extends NavigatorObserver {
 
   @override
   void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    final copy = _leavePageCallbacks.toList(growable: false);
+    final List<BotToastNavigatorObserverProxy> copy = _leavePageCallbacks.toList(growable: false);
     for (BotToastNavigatorObserverProxy observerProxy in copy) {
       observerProxy.didPop?.call(route, previousRoute);
     }

@@ -1,4 +1,4 @@
-import 'package:bot_toast/bot_toast.dart';
+import '../../bot_toast.dart';
 import 'package:flutter/material.dart';
 
 Widget notificationAnimation(
@@ -23,10 +23,8 @@ class NormalAnimation extends StatefulWidget {
   final AnimationController controller;
 
   const NormalAnimation(
-      {Key? key,
-      required this.child,
-      this.reverse = false,
-      required this.controller})
+      {required this.child, required this.controller, Key? key,
+      this.reverse = false})
       : super(key: key);
 
   @override
@@ -65,7 +63,7 @@ class NormalAnimationState extends State<NormalAnimation>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: widget.controller,
-      builder: (_, child) {
+      builder: (_, Widget? child) {
         return Transform.translate(
           offset: animationOffset.value,
           child: Opacity(
@@ -84,7 +82,7 @@ class FadeAnimation extends StatefulWidget {
   final Widget? child;
   final AnimationController controller;
 
-  const FadeAnimation({Key? key, this.child, required this.controller})
+  const FadeAnimation({required this.controller, Key? key, this.child})
       : super(key: key);
 
   @override

@@ -11,7 +11,7 @@ class KeyboardVisibility extends StatefulWidget {
       : super(key: key);
 
   @override
-  _KeyboardVisibilityState createState() => _KeyboardVisibilityState();
+  State<KeyboardVisibility> createState() => _KeyboardVisibilityState();
 }
 
 class _KeyboardVisibilityState extends State<KeyboardVisibility>

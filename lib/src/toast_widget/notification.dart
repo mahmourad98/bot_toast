@@ -9,14 +9,13 @@ class NotificationToast extends StatefulWidget {
   final List<DismissDirection>? dismissDirections;
 
   const NotificationToast(
-      {Key? key,
-      required this.child,
+      {required this.child, Key? key,
       this.slideOffFunc,
       this.dismissDirections})
       : super(key: key);
 
   @override
-  _NotificationState createState() => _NotificationState();
+  State<NotificationToast> createState() => _NotificationState();
 }
 
 class _NotificationState extends State<NotificationToast> {
@@ -34,14 +33,14 @@ class _NotificationState extends State<NotificationToast> {
     if (widget.slideOffFunc != null &&
         widget.dismissDirections != null &&
         widget.dismissDirections!.isNotEmpty) {
-      widget.dismissDirections!.forEach((direction) {
+      for (DismissDirection direction in widget.dismissDirections!) {
         child = Dismissible(
           direction: direction,
           key: key,
           confirmDismiss: confirmDismiss,
           child: child,
         );
-      });
+      }
     }
 
     return child;
