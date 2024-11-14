@@ -9,8 +9,7 @@ class TextToast extends StatefulWidget {
   final TextStyle? textStyle;
 
   const TextToast({
-    Key? key,
-    required this.text,
+    required this.text, Key? key,
     this.contentPadding,
     this.contentColor,
     this.borderRadius,

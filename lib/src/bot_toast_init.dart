@@ -33,9 +33,11 @@ class BotToastWidgetsBindingObserver with WidgetsBindingObserver {
   @override
   Future<bool> didPopRoute() async {
     if (_listener.isNotEmpty) {
-      final clone = _listener.reversed.toList(growable: false);
+      final List<PopTestFunc> clone = _listener.reversed.toList(growable: false);
       for (PopTestFunc popTest in clone) {
-        if (popTest()) return true;
+        if (popTest()) {
+          return true;
+        }
       }
     }
     return super.didPopRoute();
@@ -49,6 +51,14 @@ TransitionBuilder BotToastInit() {
   //ignore: unnecessary_statements
   BotToastWidgetsBindingObserver._singleton;
   return (_, Widget? child) {
-    return BotToastManager(key: _key, child: child!);
+    return BotToastManager(child: child!);
   };
+}
+
+class BotToastBuilder extends StatelessWidget {
+  final Widget child;
+  BotToastBuilder({required this.child,}): super(key: _key,);
+  @override Widget build(BuildContext context,) {
+    return BotToastInit()(context, child,);
+  }
 }
